@@ -36,7 +36,7 @@ $(function () {
         user();
     });
     $('#Manager').click(function(){
-        window.value="man";
+        window.value="manager";
         manager();
     });
     $('#retrieve_login_btn').click(function () {
@@ -59,7 +59,7 @@ $(function () {
         try {
             console.log("here");
             var email = document.getElementById("lost_email").value;
-            get1.open("GET", "/Livie_project1/check1?id=" + email, true);//check whether email exists
+            get1.open("GET", "/TMS/check1?id=" + email+"&id1="+window.value, true);//check whether email exists
         } catch (Exception)
         {
             console.log("error11");
@@ -165,8 +165,8 @@ function login()
     var pwd = document.getElementById("password").value;
     var get1 = new XMLHttpRequest();
     try {
-        console.log("here1 " + email);
-        get1.open("GET", "/Livie_project1/check1?id=" + email, true);
+        console.log("here1 " + email+" "+window.value);
+        get1.open("GET", "/TMS/check1?id=" + email +"&id1=" +window.value, true);
     } catch (Exception)
     {
         console.log("error11");
@@ -174,6 +174,7 @@ function login()
     get1.onreadystatechange = function () {
         console.log(this.readyState + " get1 " + this.status);
         if (this.readyState === 4 && this.status === 200) {
+            console.log(this.responseText);
             var JSONtopicobject = eval("(" + this.responseText + ")");
             var t = JSONtopicobject.topic.name;
             var t1 = JSONtopicobject.topic.name1;
@@ -182,7 +183,14 @@ function login()
             {
                 if (pwd === t1)
                 {
-                    window.open("/Livie_project1/main.html?email=" + email, '_self');
+                    if(window.value==="user")
+                    {
+                        window.open("/TMS/main.html?email=" + email, '_self');
+                    }
+                    else
+                    {
+                        window.open("/TMS/Manager.html?email=" + email, '_self');
+                    }
                     console.log(pwd + " " + t1);
 
                 }
@@ -216,3 +224,60 @@ function login()
     }
 
 }
+function register()
+{
+    var name = document.getElementById("Username").value;
+    var email = document.getElementById("Email").value;
+    var pwd = document.getElementById("Password").value;
+    var cpwd = document.getElementById("Confirm_Password").value;
+    var get2 = new XMLHttpRequest();
+    if(pwd===cpwd)
+    {
+    try {
+        console.log("here1 " + email+" ");
+        get2.open("GET", "/TMS/add?id1=" + email+"&id2=" + pwd+"&id3=" + name, true);
+    } catch (Exception)
+    {
+        console.log("error11");
+    }
+    get2.onreadystatechange = function () {
+        console.log(this.readyState + " get2 " + this.status);
+        if (this.readyState === 4 && this.status === 200) {
+                console.log(this.responseText);
+                var JSONtopicobject = eval("(" + this.responseText + ")");
+                var t = JSONtopicobject.topic.name;
+                if(t<=0)
+                {
+                    document.getElementById("sign").innerHTML="Email id already exists";
+                }
+                else
+                {
+                    document.getElementById("toast").innerHTML="You have been registered...Please login";
+                    localStorage.setItem('show', 'true');
+                    window.open("/TMS/index.html", '_self');
+                    
+                }
+            
+            }
+            
+            else
+            {
+                event.preventDefault();
+                console.log("worng");
+                document.getElementById("text-login-msg").innerHTML = "This email id does not exists";
+                document.getElementById("email").value = '';
+                document.getElementById("password").value = '';
+            }
+        };
+    try {
+        get2.send(null);
+    } catch (Exception)
+    {
+        console.log("erro12");
+    }}
+    else{
+        document.getElementById("sign").innerHTML="Passwords don't match";
+    }
+}
+
+

@@ -32,21 +32,25 @@ String pwd;
     protected void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {      
 String name=req.getParameter("id"); 
+String tab = req.getParameter("id1"); 
+/*String[] ar = name.split(",");
+String email = ar[0];
+String table = ar[1];*/
 Connection con=null;        
 Statement stmt=null;        
 PrintWriter out=res.getWriter();        
 
         try{
             //get a connection
-               con=DriverManager.getConnection("jdbc:mysql://localhost/login","root","ATul1996@@");
+               con=DriverManager.getConnection("jdbc:mysql://localhost/"+tab,"root","ATul1996@@");
             
             //Create a statement
             stmt=con.createStatement();              
 
            //Execute a query
             int count=0;
-              String query ="select * from login where email = ?";
-              String query1="select pwd from login where email = ?";
+              String query ="select * from "+tab+" where email = ?";
+              String query1="select pwd from "+tab+"  where email = ?";
 PreparedStatement st =con.prepareStatement(query);
 st.setString(1,name);
 ResultSet resultSet = st.executeQuery(); 
@@ -75,7 +79,7 @@ ResultSet resultSet1 = st1.executeQuery();
        StringBuffer  returndata =new StringBuffer("{\"topic\":{");
 returndata.append("\"name\": ");
    returndata.append("\"");
-   returndata.append(count);
+   returndata.append(tab);
    returndata.append("\"");
    returndata.append(",");
    returndata.append("\"name1\": ");

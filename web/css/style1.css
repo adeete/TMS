@@ -1,0 +1,67 @@
+body{
+}
+#city{
+    margin-left: 20vw;
+    margin-top: 40vh;
+    width: 70em;
+    background: rgba(44, 50, 60,.4);
+    height: 6em;
+}
+.card-body{
+    width: 380px;
+    height: 370px;
+    margin-top: 20vh;
+    margin-left: 35vw;
+    background-color: rgba(44, 50, 60,.4);
+}
+.toast {
+    text-align: center;
+    position: fixed;  
+    top: 8em;
+    left: 35em;
+    background-color: #ffb;
+    color: rgba(0,0,0, 0.7);
+    font: 500 0.9em Arial, Helvetica,sans-erif;
+    padding: 0.2em 0.8em;
+    border-radius: 0.4em;
+    box-shadow: inset 0px 0px 0px 0.1em rgba(0,0,0,0.3), 0px 0px 0.2em 0.1em rgba(0,0,0,0.3);
+    z-index: 11;
+    
+    display: none;  
+}
+#from{
+    margin-left: 15vw;
+    margin-top: 10vh;
+}
+#from select{
+    width: 15em;
+    height: 4em;
+    margin-top: 1.1em;
+    padding: 10px;
+}
+#sub{
+  height: 4em;
+  margin-top: -5px;
+}
+#table{
+    width: 600px;
+    margin-left: 30vw;
+    margin-top: 2vh;
+}
+.check{
+    font-size: 10px;
+    float: right;
+}
+table{
+    width: 100px;
+    height: 10em;
+}
+table th{
+    text-align: center;
+}
+table input{
+    text-align: center;
+}
+#btn{
+    margin-left: 20em;
+}

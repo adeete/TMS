@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html  lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Cookie|Pacifico" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/style1.css">
+        <title>TMS</title>
+    </head>
+
+    <body  id="home">
+        <nav class="navbar navbar-expand bg-dark navbar-dark fixed-top">
+            <div class="container">
+                <a href="index.html" class="navbar-brand" style="font-family: 'Cookie', cursive;">TMS</a>
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="\TMS\index.html" class="nav-link">LogOut</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div id="toast" class="toast">
+            
+        </div>
+        <div class="card-body">
+            <h3>Add Car</h3>
+            <p id="sign">Add following details</p>
+            <form id="myForm">
+                <div class="form-group">
+                    <input type="text" class="form-control form-control-lg" placeholder="FROM" id="FROM">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control form-control-lg" placeholder="TO" id="TO">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control form-control-lg" placeholder="CAR NO" id="car_no">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control form-control-lg" placeholder="Car Model" id="model">
+                </div>
+                <button class="btn btn-outline-light btn-block" onclick="add_vehicle()">Add</button>
+            </form>
+        </div>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/js3.js"></script>
+    </body>
+</html>

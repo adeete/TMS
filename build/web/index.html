@@ -35,7 +35,7 @@
                 </div>
             </div>
         </nav>
-
+        <div class="toast" id="toast"> This is My Toast...</div>
         <!-- HOME SECTION -->
         <header id="home-section">
             <div class="home-inner">
@@ -48,21 +48,21 @@
                             <div class="card text-center card-form">
                                 <div class="card-body">
                                     <h3>Sign Up Today</h3>
-                                    <p>Please fill out this form to register</p>
+                                    <p id="sign">Please fill out this form to register</p>
                                     <form>
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-lg" placeholder="Username">
+                                            <input type="text" class="form-control form-control-lg" placeholder="Username" id="Username">
                                         </div>
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-lg" placeholder="Email">
+                                            <input type="email" class="form-control form-control-lg" placeholder="Email" id="Email">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-lg" placeholder="Password">
+                                            <input type="password" class="form-control form-control-lg" placeholder="Password" id="Password">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-lg" placeholder="Confirm Password">
+                                            <input type="password" class="form-control form-control-lg" placeholder="Confirm_Password" id="Confirm_Password">
                                         </div>
-                                        <input type="submit" value="Submit" class="btn btn-outline-light btn-block">
+                                        <input type="submit" value="Submit" class="btn btn-outline-light btn-block" onclick="register()">
                                     </form>
                                 </div>
                             </div>
@@ -188,7 +188,7 @@
                             <textarea class="form-control" rows="4" id="comment"></textarea>
                         </div>
                         <div class="form-group" style="text-align: center">
-                        <input type="submit" value="Submit" class="btn btn-outline-light btn-block">
+                            <input type="submit" value="Submit" class="btn btn-outline-light btn-block">
                         </div>
                     </div>
                 </div>
@@ -290,7 +290,19 @@
                                         document.addEventListener('DOMContentLoaded', function (event) {
                                             // array with texts to type in typewriter
                                             var dataText = ["To travel is to live. \n\<div id=" + "author style=" + "margin-left:290px" + ">-Hans Christian Anderson</div>", "Wherever you go becomes a part of you somehow. \n\<div id=" + "author style=" + "margin-left:290px" + ">-Anita Desai</div>", "If we were meant to stay in one place ,we'd have roots instead of feets,he said. \n\<div id=" + "author style=" + "margin-left:290px" + ">-Rachel Wolchin</div>"];
+                                            var show = localStorage.getItem('show');
+                                            console.log("show");
+                                            if (show === 'true') {
+                                                var toast = $('.toast');
+                                                console.log("shpq");
+                                                //Set the content of the Toast
+                                                toast.text("you have been registered..please login");
 
+
+                                                //Show the Toast
+                                                toast.fadeIn(400).delay(3000).fadeOut(400);
+                                            }
+                                            
                                             // type one text in the typwriter
                                             // keeps calling itself until the text is finished
                                             function typeWriter(text, i, fnCallback) {
@@ -339,6 +351,8 @@
                                             StartTextAnimation(0);
                                         });
         </script>
+        <script>
 
+        </script>
     </body>
 </html>
